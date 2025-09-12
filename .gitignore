@@ -1,0 +1,52 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# dependencies
+node_modules/
+build/
+fwz/android/app/build/
+fwz/android/app/build/outputs/
+fwz/android/app/build/outputs/apk/
+fwz/android/app/build/outputs/apk/debug/
+fwz/android/app/build/outputs/apk/release/
+
+# Android/Gradle 特定文件
+fwz/android/.gradle/
+fwz/android/.idea/
+fwz/android/build/
+fwz/android/local.properties
+fwz/android/captures/
+fwz/android/app/.cxx/
+*.iml
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# typescript
+*.tsbuildinfo
