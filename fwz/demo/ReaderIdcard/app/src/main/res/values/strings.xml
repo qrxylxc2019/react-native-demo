@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">证件读取</string>
+    <string name="btntx_readcard">读卡</string>
+    <string name="btntx_nfcreadid">硬件版本</string>
+    <string name="btntx_btreadid">阅读器读证</string>
+    <string name="btntx_read_bankiccard">读银行IC卡</string>
+    <string name="btntx_read_bankmagneticcard">读银行磁条卡</string>
+    <string name="btntx_update_firmware">升级固件</string>
+    <string name="btntx_chose_btdevices">选择设备</string>
+    <string name="otg_connect_tip">请确认USB设备已经连接并且已授权，再读卡!</string>
+    <string name="bt_connect_tip">请确认蓝牙设备已经连接，再读卡!</string>
+    <string name="nfc_connect_tip">请把身份证慢慢贴近感应区域...</string>
+    <string name="read_success">读取成功!</string>
+    <string name="read_start">开始读卡......</string>
+    <string name="not_idcard">不是身份证</string>
+    <string name="no_idcard">请放置身份证</string>
+
+    <string name="name">姓名</string>
+    <string name="sex">性别</string>
+    <string name="ethnic">民族</string>
+    <string name="birth">出生</string>
+    <string name="address">住址</string>
+    <string name="idno">身份证号码</string>
+    <string name="authority">签发机关</string>
+    <string name="vaild">有效期限</string>
+    <string name="nationality">国籍</string>
+    <string name="ename">英文名</string>
+    <string name="signnum">签发</string>
+    <string name="acessnum">通行证号码</string>
+    <string name="dn">DN码</string>
+
+    <string name="title_start">开始:</string>
+    <string name="title_end">结束:</string>
+    <string name="title_take">耗时:</string>
+    <string name="title_times">成功次数:</string>
+    <string name="title_read_times">已读次数:</string>
+    <string name="title_server">服务器:</string>
+    <string name="title_sign">签名:</string>
+
+    <string name="title_paired_devices">配对设备</string>
+    <string name="none_paired">没有已配对的设备</string>
+    <string name="scanning">正在扫描设备...</string>
+    <string name="select_device">选择蓝牙设备</string>
+    <string name="none_found">无可用设备</string>
+    <string name="title_other_devices">其他设备</string>
+    <string name="button_scan">搜索</string>
+
+    <string name="action_num_tip">只适用于蓝牙或OTG方式读身份证, 填入一个大于0的整数</string>
+    <string name="action_auth_tip">填入格式：ip(或域名)+端口+请求接口。例如：www.sunrise.com:80/authauth/abc</string>
+    <string name="choose_server_tip">填入的服务器地址为空</string>
+
+    <string name="loading">请放置身份证在感应区并保持不动...</string>
+</resources>
