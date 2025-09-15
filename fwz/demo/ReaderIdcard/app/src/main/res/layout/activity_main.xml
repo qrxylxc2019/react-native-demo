@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="证件读取DEMO"
+                android:textColor="#333333"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/btn_setup"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/setup" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/device_layout"
+            android:layout_width="359dp"
+            android:layout_height="36dp"
+            android:layout_below="@id/title_layout"
+            android:background="@drawable/radius_text_bg"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/tv_chosedevice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btn_chosedevice"
+                android:layout_width="70dp"
+                android:layout_height="28dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="2dp"
+                android:background="@mipmap/device_chose_bg"
+                android:text="@string/btntx_chose_btdevices"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_first"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/device_layout"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="平均/本次(ms)" />
+
+                <TextView
+                    android:id="@+id/tv_readTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="读取次数(成功/总)" />
+
+                <TextView
+                    android:id="@+id/tv_starttime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="成功率" />
+
+                <TextView
+                    android:id="@+id/tv_endtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/idinfo_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_first"
+            android:background="@mipmap/idcard"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/IDLabelStyle"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center|left"
+                    android:text="姓名" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/IDTextStyle"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center|left" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/IDLabelStyle"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center|left"
+                    android:text="性别" />
+
+                <TextView
+                    android:id="@+id/tv_sex"
+                    style="@style/IDTextStyle"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left" />
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/IDLabelStyle"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center|left"
+                    android:text="民族" />
+
+                <TextView
+                    android:id="@+id/tv_ehtnic"
+                    style="@style/IDTextStyle"
+                    android:layout_height="match_parent"
+                    android:gravity="center|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/IDLabelStyle"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center|left"
+                    android:text="出生" />
+
+                <TextView
+                    android:id="@+id/tv_birthYear"
+                    style="@style/IDTextStyle"
+                    android:layout_width="35dp"
+                    android:gravity="center|left" />
+
+                <TextView
+                    style="@style/IDLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:gravity="center|left"
+                    android:text="年" />
+
+                <TextView
+                    android:id="@+id/tv_birthMonth"
+                    style="@style/IDTextStyle"
+                    android:layout_width="20dp"
+                    android:gravity="center|left" />
+
+                <TextView
+                    style="@style/IDLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:gravity="center|left"
+                    android:text="月" />
+
+                <TextView
+                    android:id="@+id/tv_birthDay"
+                    style="@style/IDTextStyle"
+                    android:layout_width="20dp"
+                    android:gravity="center|left" />
+
+                <TextView
+                    style="@style/IDLabelStyle"
+                    android:layout_width="wrap_content"
+
+                    android:gravity="center|left"
+                    android:text="日" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+
+                    style="@style/IDLabelStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center|left"
+                    android:text="住址" />
+
+                <TextView
+                    android:id="@+id/tv_address"
+                    style="@style/IDTextStyle"
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    android:gravity="center|left"
+                    android:maxLines="2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/IDLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center|left"
+                    android:text="公民身份证号码" />
+
+                <TextView
+                    android:id="@+id/tv_number"
+                    style="@style/IDTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/IDLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="95dp"
+                    android:gravity="center|left"
+                    android:text="签发机关" />
+
+                <TextView
+                    android:id="@+id/tv_signed"
+                    style="@style/IDTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center|left" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/IDLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="95dp"
+                    android:gravity="center|left"
+                    android:text="有效期限" />
+
+                <TextView
+                    android:id="@+id/tv_validate"
+                    style="@style/IDTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center|left" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/readid_res_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/idinfo_layout"
+            android:gravity="center"
+            android:text="..."
+            android:textColor="#00D11C"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/button_group_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@id/readid_res_tv"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_btreadid"
+                style="@style/IDButtonStyle"
+                android:text="@string/btntx_btreadid" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/button_group2_layout"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_below="@id/button_group_layout"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_update_firmware"
+                style="@style/IDButtonStyle"
+                android:text="@string/btntx_update_firmware"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btn_readcard"
+                style="@style/IDButtonStyle"
+                android:layout_marginRight="6dp"
+                android:text="@string/btntx_readcard"
+                android:visibility="invisible" />
+
+            <Button
+                android:id="@+id/btn_nfcreadid"
+                style="@style/IDButtonStyle"
+                android:layout_marginRight="6dp"
+                android:text="@string/btntx_nfcreadid"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_otherinfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_group2_layout"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/othertext_bg"
+            android:textIsSelectable="true"
+            android:text="其它信息"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="75dp"
+            android:layout_height="95dp"
+            android:layout_below="@id/ll_first"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="88dp"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
+</ScrollView>
