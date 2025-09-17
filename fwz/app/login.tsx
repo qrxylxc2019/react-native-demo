@@ -204,6 +204,12 @@ export default function LoginScreen() {
             >
               <Text style={styles.loginButtonText}>商户登录</Text>
             </TouchableOpacity>
+
+            {/* 设备号显示 */}
+            <View style={styles.deviceIdContainer}>
+              <Text style={styles.deviceIdLabel}>设备号:</Text>
+              <Text style={styles.deviceIdText}>{deviceUniqueId || '获取中...'}</Text>
+            </View>
             
             {/* <TouchableOpacity style={styles.mobileLoginButton}>
               <Text style={styles.mobileLoginText}>返回手机登录</Text>
@@ -306,6 +312,28 @@ const styles = StyleSheet.create({
   mobileLoginText: {
     color: '#666',
     fontSize: 16,
+  },
+  deviceIdContainer: {
+    marginTop: 15,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+  },
+  deviceIdLabel: {
+    color: '#666',
+    fontSize: 14,
+    marginBottom: 5,
+  },
+  deviceIdText: {
+    color: '#333',
+    fontSize: 12,
+    fontFamily: 'monospace',
+    backgroundColor: '#f5f5f5',
+    padding: 8,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+    textAlign: 'center',
+    minWidth: 200,
   },
   modalOverlay: {
     flex: 1,
