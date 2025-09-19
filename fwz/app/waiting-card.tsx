@@ -47,6 +47,18 @@ export default function WaitingCardScreen() {
 
   // 身份证读取相关初始化
   useEffect(() => {
+    // 设置读卡类型
+    const setCardType = async () => {
+      try {
+        await NativeModules.XToastModule.setCardType(type);
+        console.log('已设置读卡类型:', type);
+      } catch (error) {
+        console.error('设置读卡类型失败:', error);
+      }
+    };
+    
+    setCardType();
+    
     if (type === 2) { // 只有身份证读取时才初始化
       // 添加事件监听
       const listener = IdCardReader.addListener(handleIdCardEvent);
@@ -77,8 +89,9 @@ export default function WaitingCardScreen() {
       // 自动开始社保卡读取
       const initSocialCardReading = async () => {
         try {
+          const nfcStatusResult = await checkNfcStatus();
           await new Promise(resolve => setTimeout(resolve, 1000)); // 等待1秒确保初始化完成
-          await handleReadCard();
+          // await handleReadCard();
         } catch (error) {
           console.error('自动启动社保卡读取失败:', error);
         }
