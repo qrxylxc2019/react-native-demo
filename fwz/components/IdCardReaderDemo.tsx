@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Alert,
   Image,
   ScrollView,
   ActivityIndicator,
@@ -78,21 +77,20 @@ const IdCardReaderDemo: React.FC = () => {
         break;
         
       case 'idcard_error':
-        setStatus(`读取失败: ${event.errorInfo}`);
+        setStatus(`读取进度: ${event.errorInfo}`);
         setIsReading(false);
-        Alert.alert('读取失败', event.errorInfo || '未知错误');
         break;
     }
   };
 
   const startReading = async () => {
     if (!nfcStatus.available) {
-      Alert.alert('错误', '设备不支持NFC功能');
+      setStatus('设备不支持NFC功能');
       return;
     }
     
     if (!nfcStatus.enabled) {
-      Alert.alert('提示', '请先在系统设置中启用NFC功能');
+      setStatus('请先在系统设置中启用NFC功能');
       return;
     }
 
@@ -100,11 +98,10 @@ const IdCardReaderDemo: React.FC = () => {
       setIsReading(true);
       setStatus('启动身份证读取模式...');
       await IdCardReader.startReading();
-      setStatus('请将身份证贴近设备背面');
+      setStatus('请将身份证贴近设备');
     } catch (error) {
       setIsReading(false);
-      setStatus('启动失败');
-      Alert.alert('错误', `启动身份证读取失败: ${error}`);
+      setStatus(`启动失败: ${error}`);
     }
   };
 
@@ -114,7 +111,7 @@ const IdCardReaderDemo: React.FC = () => {
       setIsReading(false);
       setStatus('已停止读取');
     } catch (error) {
-      Alert.alert('错误', `停止读取失败: ${error}`);
+      setStatus(`停止读取失败: ${error}`);
     }
   };
 
