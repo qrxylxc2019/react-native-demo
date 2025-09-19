@@ -25,7 +25,7 @@ class IdCardReaderModule(reactContext: ReactApplicationContext) : ReactContextBa
         try {
             val activity = currentActivity
             if (activity is MainActivity) {
-                // activity.enableIdCardReaderMode() // 暂时注释掉
+                activity.enableIdCardReaderMode()
                 promise.resolve("身份证读取模式已启用")
             } else {
                 promise.reject("ERROR", "Activity不可用")
@@ -44,7 +44,7 @@ class IdCardReaderModule(reactContext: ReactApplicationContext) : ReactContextBa
         try {
             val activity = currentActivity
             if (activity is MainActivity) {
-                // activity.disableIdCardReaderMode() // 暂时注释掉
+                activity.disableIdCardReaderMode()
                 promise.resolve("身份证读取模式已禁用")
             } else {
                 promise.reject("ERROR", "Activity不可用")

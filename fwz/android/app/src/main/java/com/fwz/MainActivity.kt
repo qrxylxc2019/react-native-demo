@@ -45,6 +45,9 @@ class MainActivity : ReactActivity() {
   private var isIdCardReading = false
   private var hasTag = 0
   
+  // 读卡类型：1-社保卡，2-身份证
+  private var currentCardType = 0
+  
   companion object {
     private const val TAG = "MainActivity"
     private const val ID_CARD_NFC_START = 52
@@ -589,10 +592,24 @@ class MainActivity : ReactActivity() {
    */
   override fun onResume() {
     super.onResume()
-    // 启用社保卡读取模式
-    enableReaderMode()
-    // 启用身份证读取模式
-    enableIdCardReaderMode() 
+    // 先禁用所有读卡模式
+    disableReaderMode()
+    disableIdCardReaderMode()
+    
+    // 根据当前卡片类型启用相应的读卡模式
+    when (currentCardType) {
+      1 -> {
+        Log.d(TAG, "启用社保卡读取模式")
+        enableReaderMode()
+      }
+      2 -> {
+        Log.d(TAG, "启用身份证读取模式")
+        enableIdCardReaderMode()
+      }
+      else -> {
+        Log.d(TAG, "未设置读卡类型，不启用任何读卡模式")
+      }
+    }
   }
   
   /**
@@ -604,6 +621,37 @@ class MainActivity : ReactActivity() {
     disableIdCardReaderMode()
   }
   
+  /**
+   * 设置当前读卡类型
+   * @param cardType 读卡类型：1-社保卡，2-身份证
+   */
+  fun setCurrentCardType(cardType: Int) {
+    Log.d(TAG, "设置读卡类型: $cardType")
+    currentCardType = cardType
+    
+    // 立即应用新的读卡模式
+    runOnUiThread {
+      // 先禁用所有读卡模式
+      disableReaderMode()
+      disableIdCardReaderMode()
+      
+      // 根据新的卡片类型启用相应的读卡模式
+      when (currentCardType) {
+        1 -> {
+          Log.d(TAG, "【社保卡模式】")
+          enableReaderMode()
+        }
+        2 -> {
+          Log.d(TAG, "【身份证模式】")
+          enableIdCardReaderMode()
+        }
+        else -> {
+          Log.d(TAG, "【禁用所有模式】")
+        }
+      }
+    }
+  }
+
   /**
    * 资源释放
    */

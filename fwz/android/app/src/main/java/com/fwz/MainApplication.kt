@@ -12,7 +12,7 @@ import com.facebook.react.defaults.DefaultReactNativeHost
 import android.util.Log
 import java.io.File
 import android.os.Build
-import com.oblador.vectoricons.VectorIconsPackage
+
 
 class MainApplication : Application(), ReactApplication {
   
@@ -138,7 +138,6 @@ class MainApplication : Application(), ReactApplication {
               // Packages that cannot be autolinked yet can be added manually here, for example:
               // add(MyReactNativePackage())
               add(XToastPackage())
-              add(VectorIconsPackage())
               add(IdCardReaderPackage())
             }
 

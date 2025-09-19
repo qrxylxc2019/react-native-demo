@@ -405,4 +405,28 @@ public class XToastModule extends ReactContextBaseJavaModule {
             return -1;
         }
     }
+
+    /**
+     * 设置当前读卡类型
+     * @param cardType 读卡类型：1-社保卡，2-身份证
+     * @param promise 用于将结果返回给React Native
+     */
+    @ReactMethod
+    public void setCardType(int cardType, Promise promise) {
+        try {
+            Activity currentActivity = reactContext.getCurrentActivity();
+            if (currentActivity instanceof MainActivity) {
+                MainActivity mainActivity = (MainActivity) currentActivity;
+                mainActivity.setCurrentCardType(cardType);
+                Log.d(TAG, "设置读卡类型: " + cardType);
+                promise.resolve("设置成功");
+            } else {
+                Log.e(TAG, "无法获取MainActivity实例");
+                promise.reject("E_ACTIVITY_ERROR", "无法获取MainActivity实例");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "设置读卡类型错误: " + e.getMessage(), e);
+            promise.reject("E_SET_CARD_TYPE", "设置读卡类型错误: " + e.getMessage());
+        }
+    }
 } 
