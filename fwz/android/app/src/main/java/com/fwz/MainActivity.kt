@@ -285,8 +285,6 @@ class MainActivity : ReactActivity() {
    */
   private fun initIdCardNfcCallback() {
     Log.d(TAG, "开始初始化身份证NFC回调")
-    // TODO: 添加身份证读取SDK依赖后启用
-    /*
     Log.d(TAG, "检查Android版本: ${Build.VERSION.SDK_INT}")
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
       Log.d(TAG, "Android版本支持NFC，创建ReaderCallback")
@@ -309,7 +307,6 @@ class MainActivity : ReactActivity() {
     } else {
       Log.w(TAG, "Android版本不支持NFC ReaderCallback")
     }
-    */
     Log.d(TAG, "身份证NFC回调初始化完成")
   }
   
@@ -318,8 +315,6 @@ class MainActivity : ReactActivity() {
    */
   private fun handleIdCardMessage(msg: Message) {
     Log.d(TAG, "处理身份证读取消息: what=${msg.what}")
-    // TODO: 添加身份证读取SDK依赖后启用
-    /*
     when (msg.what) {
       ConsantHelper.READ_CARD_SUCCESS -> {
         Log.d(TAG, "身份证读取成功")
@@ -391,7 +386,6 @@ class MainActivity : ReactActivity() {
         Log.d(TAG, "身份证读取状态重置为false")
       }
     }
-    */
     Log.d(TAG, "身份证消息处理完成")
   }
   
@@ -575,8 +569,6 @@ class MainActivity : ReactActivity() {
    */
   fun disableIdCardReaderMode() {
     Log.d(TAG, "开始禁用身份证读取模式")
-    // TODO: 添加身份证读取SDK依赖后启用
-    /*
     Log.d(TAG, "禁用NFC读取模式")
     idCardNfcAdapter?.disableReaderMode(this)
     Log.d(TAG, "NFC读取模式已禁用")
@@ -589,7 +581,6 @@ class MainActivity : ReactActivity() {
     isIdCardReading = false
     hasTag = 0
     Log.d(TAG, "身份证读取状态已重置: isIdCardReading=$isIdCardReading, hasTag=$hasTag")
-    */
     Log.d(TAG, "身份证读取模式禁用完成")
   }
 
@@ -598,7 +589,9 @@ class MainActivity : ReactActivity() {
    */
   override fun onResume() {
     super.onResume()
-    // enableReaderMode()
+    // 启用社保卡读取模式
+    enableReaderMode()
+    // 启用身份证读取模式
     enableIdCardReaderMode() 
   }
   
@@ -608,7 +601,7 @@ class MainActivity : ReactActivity() {
   override fun onPause() {
     super.onPause()
     disableReaderMode()
-    // disableIdCardReaderMode() // 暂时
+    disableIdCardReaderMode()
   }
   
   /**
