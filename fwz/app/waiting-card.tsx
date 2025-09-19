@@ -481,20 +481,18 @@ export default function WaitingCardScreen() {
             ) : (
               <View style={styles.tipContainer}>
                 <Text style={styles.tipText}>请将卡片放在读卡器上</Text>
-                {type === 2 && (
-                  <View style={styles.statusContainer}>
-                    <Text style={styles.statusLabel}>NFC状态:</Text>
-                    <Text style={[styles.statusValue, { color: nfcStatus.available && nfcStatus.enabled ? 'green' : 'red' }]}>
-                      {nfcStatus.available ? (nfcStatus.enabled ? '可用' : '不支持') : '不支持'}
-                    </Text>
-                  </View>
-                )}
-                {type === 2 && (
-                  <View style={styles.statusContainer}>
-                    <Text style={styles.statusLabel}>读取状态:</Text>
-                    <Text style={styles.statusValue}>{status}</Text>
-                  </View>
-                )}
+                
+                <View style={styles.statusContainer}>
+                  <Text style={styles.statusLabel}>NFC状态:</Text>
+                  <Text style={[styles.statusValue, { color: nfcStatus.available && nfcStatus.enabled ? 'green' : 'red' }]}>
+                    {nfcStatus.available ? (nfcStatus.enabled ? '可用' : '不支持') : '不支持'}
+                  </Text>
+                </View>
+              
+                <View style={styles.statusContainer}>
+                  <Text style={styles.statusLabel}>读取状态:</Text>
+                  <Text style={styles.statusValue}>{status}</Text>
+                </View>
               </View>
             )}
 

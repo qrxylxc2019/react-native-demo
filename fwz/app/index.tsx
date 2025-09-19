@@ -267,21 +267,6 @@ export default function HomeScreen() {
             </View>
           </View>
 
-          {/* ID Card Demo */}
-          <View style={styles.orderSection}>
-            <View style={styles.orderTitleRow}>
-              <View style={styles.orderTitleBar} />
-              <Text style={styles.orderTitle}>身份证读取演示</Text>
-            </View>
-            <View style={styles.orderContentRow}>
-              <Text style={styles.orderDescription}>测试身份证NFC读取功能</Text>
-              <TouchableOpacity style={styles.orderButton} onPress={() => navigation.navigate('idcard-demo')}>
-                <Text style={styles.orderButtonText}>身份证演示</Text>
-                <Image source={require('../assets/images/right-arrow.png')} style={{width: 18, height: 18}} />
-              </TouchableOpacity>
-            </View>
-          </View>
-
           {/* User Info */}
           <View style={styles.userInfoCard}>
             <View style={styles.orderTitleRow}>
