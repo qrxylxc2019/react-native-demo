@@ -25,8 +25,8 @@ type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, '
 
 export default function LoginScreen() {
   const navigation = useNavigation<LoginScreenNavigationProp>();
-  const [username, setUsername] = useState('ydrzd02'); // ydrzd02
-  const [password, setPassword] = useState('Etecsun2021');  // Etecsun2021
+  const [username, setUsername] = useState(''); // ydrzd02
+  const [password, setPassword] = useState('');  // Etecsun2021
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [deviceUniqueId, setDeviceUniqueId] = useState('');
@@ -204,7 +204,10 @@ export default function LoginScreen() {
             >
               <Text style={styles.loginButtonText}>商户登录</Text>
             </TouchableOpacity>
-            
+            <View id="deviceId" style={styles.deviceIdContainer}>
+              <Text style={styles.deviceIdLabel}>设备唯一编码:</Text>
+              <Text style={styles.deviceIdText}>{deviceUniqueId || '获取中...'}</Text>
+            </View>
             {/* <TouchableOpacity style={styles.mobileLoginButton}>
               <Text style={styles.mobileLoginText}>返回手机登录</Text>
             </TouchableOpacity> */}
@@ -329,5 +332,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 15,
+  },
+  deviceIdContainer: {
+    marginTop: 20,
+    padding: 15,
+    backgroundColor: '#f5f5f5',
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  deviceIdLabel: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 5,
+  },
+  deviceIdText: {
+    fontSize: 12,
+    color: '#333',
+    fontFamily: 'monospace',
+    textAlign: 'center',
   },
 });
