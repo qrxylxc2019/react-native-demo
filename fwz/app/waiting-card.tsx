@@ -365,39 +365,9 @@ export default function WaitingCardScreen() {
       <View style={styles.idCardInfoContainer}>
         <Text style={styles.idCardInfoTitle}>身份证信息</Text>
         
-        {idCardInfo.photo && (
-          <View style={styles.photoContainer}>
-            <Image
-              source={{ uri: `data:image/jpeg;base64,${idCardInfo.photo}` }}
-              style={styles.photo}
-              resizeMode="contain"
-            />
-          </View>
-        )}
-        
         <View style={styles.infoRow}>
           <Text style={styles.label}>姓名:</Text>
           <Text style={styles.value}>{idCardInfo.name}</Text>
-        </View>
-        
-        <View style={styles.infoRow}>
-          <Text style={styles.label}>性别:</Text>
-          <Text style={styles.value}>{idCardInfo.gender}</Text>
-        </View>
-        
-        <View style={styles.infoRow}>
-          <Text style={styles.label}>民族:</Text>
-          <Text style={styles.value}>{idCardInfo.nation}</Text>
-        </View>
-        
-        <View style={styles.infoRow}>
-          <Text style={styles.label}>出生日期:</Text>
-          <Text style={styles.value}>{formatBirthday(idCardInfo.birthday)}</Text>
-        </View>
-        
-        <View style={styles.infoRow}>
-          <Text style={styles.label}>住址:</Text>
-          <Text style={styles.value}>{idCardInfo.address}</Text>
         </View>
         
         <View style={styles.infoRow}>
@@ -405,49 +375,7 @@ export default function WaitingCardScreen() {
           <Text style={styles.value}>{idCardInfo.idNum}</Text>
         </View>
         
-        <View style={styles.infoRow}>
-          <Text style={styles.label}>签发机关:</Text>
-          <Text style={styles.value}>{idCardInfo.issueOrg}</Text>
-        </View>
         
-        <View style={styles.infoRow}>
-          <Text style={styles.label}>有效期限:</Text>
-          <Text style={styles.value}>{idCardInfo.effectDate} - {idCardInfo.expireDate}</Text>
-        </View>
-        
-        {/* 特殊身份证类型的额外信息 */}
-        {idCardInfo.idType === 'I' && (
-          <>
-            <View style={styles.infoRow}>
-              <Text style={styles.label}>国籍:</Text>
-              <Text style={styles.value}>{idCardInfo.nationality}</Text>
-            </View>
-            <View style={styles.infoRow}>
-              <Text style={styles.label}>英文姓名:</Text>
-              <Text style={styles.value}>{idCardInfo.englishName}</Text>
-            </View>
-          </>
-        )}
-        
-        {idCardInfo.idType === 'J' && (
-          <>
-            <View style={styles.infoRow}>
-              <Text style={styles.label}>签发次数:</Text>
-              <Text style={styles.value}>{idCardInfo.signCount}</Text>
-            </View>
-            <View style={styles.infoRow}>
-              <Text style={styles.label}>通行证号:</Text>
-              <Text style={styles.value}>{idCardInfo.passNum}</Text>
-            </View>
-          </>
-        )}
-        
-        {idCardInfo.dn && (
-          <View style={styles.infoRow}>
-            <Text style={styles.label}>DN:</Text>
-            <Text style={styles.value}>{idCardInfo.dn}</Text>
-          </View>
-        )}
       </View>
     );
   };
@@ -467,7 +395,11 @@ export default function WaitingCardScreen() {
             </Text>
 
             <Image
-              source={require('../assets/images/card.png')}
+              source={
+                type === 1
+                  ? require('../assets/images/card.png')
+                  : require('../assets/images/idcard.png')
+              }
               style={styles.cardImage}
             />
 
@@ -515,12 +447,11 @@ export default function WaitingCardScreen() {
                 {cardInfo.name && (
                   <Text style={styles.resultText}>姓名: {cardInfo.name}</Text>
                 )}
-                <Text style={styles.resultText}>原始数据: {cardInfo.data}</Text>
               </View>
             )}
 
             {/* 显示身份证信息 */}
-            {type === 2 && renderIdCardInfo()}
+            {type === 2 && !loading && renderIdCardInfo()}
           </View>
 
         </View>
